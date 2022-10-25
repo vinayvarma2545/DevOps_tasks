@@ -23,7 +23,7 @@ jobs:
         uses: ./
         with:
           github_token: ${{ secrets.NEW_GITHUB_TOKEN }}
-          message: ${{ github.ref }} merged and created ${{ steps.tag_version.outputs.new_tag }}
+          message: created ${{ steps.tag_version.outputs.new_tag }}
           tag: v${{ steps.tag_version.outputs.new_tag }}
 
       - name: Show Ref
