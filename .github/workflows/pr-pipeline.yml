@@ -23,9 +23,9 @@ jobs:
         uses: ./
         with:
           github_token: ${{ secrets.NEW_GITHUB_TOKEN }}
-          message: ${{ github.ref }} merged and created ${{ steps.version.outputs.value }}
-          tag: v${{ steps.version.outputs.value }}
+          message: ${{ github.ref }} merged and created ${{ steps.tag_version.outputs.new_tag }}
+          tag: v${{ steps.tag_version.outputs.new_tag }}
 
       - name: Show Ref
         run: |
-          echo "Created version ${{ steps.tag.outputs.ref }}"
+          echo "Created version ${{ steps.tag_version.outputs.ref }}"
