@@ -8,4 +8,8 @@ def hello_world():
 
 @app.route("/ex")
 def extent():
-    return "<p>Extended</p>"    
+    return "<p>Extended</p>"  
+
+@app.route("/new")
+def extent():
+    return "<p>branch</p>"       
