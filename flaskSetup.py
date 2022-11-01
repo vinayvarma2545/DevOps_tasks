@@ -1,15 +1,15 @@
-from flask import Flask
+# from flask import Flask
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+# @app.route("/")
+# def hello_world():
+#     return "<p>Hello, World!</p>"
 
-@app.route("/ex")
-def extent():
-    return "<p>Extended</p>"  
+# @app.route("/ex")
+# def extent():
+#     return "<p>Extended</p>"  
 
-@app.route("/new")
-def extent():
-    return "<p>1stbranch</p>"       
+# @app.route("/new")
+# def extent():
+#     return "<p>1stbranch</p>"       
