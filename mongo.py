@@ -3,29 +3,20 @@ from flask_mongoengine import MongoEngine
 import json
 from healthcheck import HealthCheck
 from prometheus_flask_exporter import PrometheusMetrics
-import os
+# import os
 
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
-# app.run(host="0.0.0.0:5000" , debug=True)
+# app.run(host="0.0.0.0" , debug=True)
 
 health = HealthCheck()
-
-# @app.route("/")
-# def root_path():
-#   return("Welcome")
-
 metrics.info('app_info', 'Application info', version='1.0.3')
 
 app.config['MONGODB_SETTINGS'] = {
   'db': 'DevOps',
-  'host': 'mongodb',
+  'host': 'localhost',
   'port': 27017
 }
-
-# app.config['MONGO_URI'] = "mongodb+srv://vinay:1a2b3c@cluster0.rbngnx6.mongodb.net/?retryWrites=true&w=majority"
-
-
 
 db = MongoEngine()
 db.init_app(app)
@@ -42,10 +33,6 @@ class Workers(db.Document):
 @app.route("/")
 def root_path():
   return("Welcome")
-
-@app.route("/test")
-def root_path2():
-  return("ok")  
 
 
 @app.route('/workerslist/', methods=['GET'])
@@ -146,7 +133,7 @@ def delete_user(id):
 app.add_url_rule('/healthcheck', 'healthcheck', view_func=lambda: health.run())
 
 if __name__ == "__main__":
-  # app.run(debug=True)
-  port = int(os.environ.get('PORT', 5000))
-  app.run(debug=True, host='0.0.0.0', port=port)
-  # app.run(host='0.0.0.0' , port=5000)
+  app.run(debug=True)
+  # port = int(os.environ.get('PORT', 5000))
+  # app.run(debug=True, host='0.0.0.0', port=port)
+    # app.run(debug=True)
