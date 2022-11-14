@@ -29,10 +29,10 @@ jobs:
 
       - name: Snyk Container Test
         continue-on-error: true
-        uses: snyk/actions/docker@master
+        uses: snyk/actions/docker@main
         env:
           SNYK_TOKEN: ${{ Secrets.SNYK_TOKEN }}
         with:
-          image: goof:PROD
+          image: mongo:latest
           args: --file=Dockerfile 
           
