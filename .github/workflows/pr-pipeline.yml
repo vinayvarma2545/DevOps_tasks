@@ -19,6 +19,14 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
+          
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag myapp:${{ steps.vars.outputs.docker_tag }}
+
       - name: Scan with Phonito Security
         uses: phonito/phonito-scanner-action@master
         with:
