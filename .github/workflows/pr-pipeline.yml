@@ -34,10 +34,5 @@ jobs:
           SNYK_TOKEN: ${{ Secrets.SNYK_TOKEN }}
         with:
           image: mongo:latest
-          args: --file=Dockerfile 
-           if medium vulnarabilities > 3 ; then
-            echo "Game over!"
-            exit 1
-            fi
-          
-          
+          args: --file=Dockerfile
+                --severity-threshold=low|medium
