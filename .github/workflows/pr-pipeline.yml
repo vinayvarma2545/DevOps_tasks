@@ -33,8 +33,11 @@ jobs:
         env:
           SNYK_TOKEN: ${{ Secrets.SNYK_TOKEN }}
         with:
-          if: medium vulnerabilities < 3
           image: mongo:latest
           args: --file=Dockerfile 
+           if medium vulnarabilities > 3 ; then
+            echo "Game over!"
+            exit 1
+            fi
           
           
