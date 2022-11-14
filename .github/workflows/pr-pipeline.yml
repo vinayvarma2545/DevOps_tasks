@@ -19,3 +19,10 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
+      - name: Build and save
+        uses: docker/build-push-action@v3
+        with:
+         context: ${{ env.DOCKERFILE_CONTEXT }}
+         tags: ${{ env.REGISTRY_HOST }}/${{ secrets.REGISTRY_USER }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+         load: true          
+          
