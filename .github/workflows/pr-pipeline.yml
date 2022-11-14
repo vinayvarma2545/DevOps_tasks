@@ -29,7 +29,7 @@ jobs:
 
       - name: Snyk Container Test
         continue-on-error: true
-        uses: snyk/actions/docker@main
+        uses: snyk/actions/docker@master
         env:
           SNYK_TOKEN: ${{ Secrets.SNYK_TOKEN }}
         with:
