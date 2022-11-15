@@ -35,4 +35,3 @@ jobs:
         with:
           image: mongo:latest
           args: --file=Dockerfile
-          allow_progression_on_vuln: false
